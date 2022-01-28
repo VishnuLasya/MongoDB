@@ -1,0 +1,20 @@
+MONGO DB Queries
+
+load("D:/Spring_2021/CS_504_Prof.Ping Deng/loadMovieDetailsDataset.js")
+--true
+
+
+1. db.movieDetails.find({"director":"George Lucas"}).count()
+2. db.movieDetails.find({$and: [ {"year":2010},{"rated":"PG"}]},{"director":1,"_id":0}).pretty()
+3. db.movieDetails.find({$and: [{"awards.nominations":10},{"rated":"PG"}]},{"title":1,"_id":0}).pretty()
+4. db.movieDetails.find({$and: [{"awards.nominations":2},{"awards.wins":2}]}).count()
+5. db.movieDetails.find({"metacritic":{$exists:false}}).count()
+6. db.movieDetails.find({"writers": ['Ethan Coen','Joel Coen']},{"imdb.rating":1,"_id":0})
+7. db.movieDetails.find({"genres": "Family"}).count()
+8. db.movieDetails.find({"genres.1": "Western"}).count()
+9. db.movieDetails.find({$and: [{"imdb.rating":{$gt:9}},{"plot":{$ne:null}}]},{"title":1,"plot":1,"_id":0}).pretty()
+10.db.movieDetails.find({$or: [{"writers":"Ethan Coen"},{"writers":"Joel Coen"}]},{qty:1,"actors":{$slice:1},"_id":0}).pretty()
+
+
+
+
